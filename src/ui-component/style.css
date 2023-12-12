@@ -1,0 +1,28 @@
+.trending-item {
+  /* border-radius: 10px; */
+  padding-right: 10px;
+  position: relative;
+  height: 400px;
+  padding: 10px;
+}
+
+.pop-div {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-item {
+  position: absolute;
+  background-color: black;
+  border-radius: 25px;
+
+  bottom: 110px;
+  left: 20px;
+}

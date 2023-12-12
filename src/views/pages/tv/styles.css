@@ -1,0 +1,26 @@
+.item-list {
+  position: relative;
+  cursor: pointer;
+}
+.item-list #item {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  width: 202px;
+  padding-bottom: 10px;
+  height: 420px;
+}
+.progress-item {
+  position: absolute;
+  bottom: 90px;
+  border-radius: 25px;
+  left: 20px;
+}
+#item h4,
+span {
+  /* margin-top: 30px; */
+  padding-left: 10px;
+}
+#item img {
+  margin-bottom: 30px;
+}

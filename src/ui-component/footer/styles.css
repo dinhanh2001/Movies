@@ -1,0 +1,29 @@
+img {
+  width: 100px;
+  height: auto;
+}
+#content {
+  /* height: 400px; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #03213a;
+  padding-top: 100px;
+  color: white;
+  gap: 20px;
+  padding-bottom: 100px;
+  margin-top: 20px;
+}
+#content #div-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
+#content #div-image button {
+  padding: 10px;
+  border-radius: 8px;
+  color: #01b4e4;
+  font-weight: 800;
+  background-color: white;
+}

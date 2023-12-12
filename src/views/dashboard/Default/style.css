@@ -1,0 +1,148 @@
+.bg-home {
+  background-image: url('https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/SqAZjEqqBAYvyu3KSrWq1d0QLB.jpg');
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 40px 20px 40px;
+}
+.bg-home h2 {
+  color: white;
+  font-size: 40px;
+  line-height: 50px;
+  margin-bottom: 20px;
+}
+h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  font-size: 25px;
+}
+.trending {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.list-trending {
+  height: 450px;
+  padding-left: 10px;
+}
+.trending-items {
+  display: flex;
+  overflow-y: scroll;
+}
+.trending-item {
+  /* border-radius: 10px; */
+  padding-right: 10px;
+  position: relative;
+  height: 350px;
+  padding: 10px;
+}
+
+.image-trending {
+  width: 150px;
+  height: 255px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.pop-div {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: gray;
+  width: 25px;
+  height: 25px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Latest-trailers {
+  margin-top: 20px;
+  height: 450px;
+  margin-bottom: 20px;
+}
+.Latest-trailers #latest-title {
+  display: flex;
+  align-items: center;
+}
+.Latest-trailers #latest-title h2 {
+  /* margin-bottom: 10px; */
+  margin-right: 10px;
+}
+.lastest-items {
+  height: 450px;
+  overflow-y: scroll;
+  display: flex;
+  margin-top: 20px;
+  padding: 20px;
+}
+.lastest-item {
+  /* width: 320px; */
+  margin-left: 20px;
+  position: relative;
+}
+.lastest-item:hover {
+  transform: scale(1.05);
+}
+.lastest-items #image-item img {
+  height: auto;
+  width: 230px;
+}
+.lastest-item #image-item .play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -250%);
+}
+.lastest-item #image-item .pop-comfirm {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 16px;
+}
+.lastest-items .lastest-item-content {
+  text-align: center;
+  line-height: 15px;
+}
+.lastest-items .lastest-item-content h3,
+h5 {
+  font-size: 15px;
+  color: white;
+}
+#popular-title {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+#rate-header {
+}
+.image-board {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-right: 10px;
+}
+#items-board {
+  display: flex;
+  justify-content: space-around;
+}
+#items-board div {
+  width: 300px;
+}
+.board-item {
+  display: flex;
+  align-items: center;
+}
+#rate-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#title-rate {
+}
+.test {
+  margin-left: 10px;
+}
