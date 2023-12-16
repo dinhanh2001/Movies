@@ -243,6 +243,7 @@ function* requestgetDetailTVSaga(action) {
 }
 
 function* requestRequestChangeFavoriteRequest(action) {
+  console.log(action);
   yield put(changeFavoriteListSuccess(action.payload)); // nhan id tu giao dien
 }
 
@@ -256,7 +257,7 @@ export default function* watchHomePage() {
   yield takeLatest(getPopularTrailersListRequest.type, requestgetPopularTrailersListSaga);
   yield takeLatest(getInThearsTrailersListRequest.type, requestgetIntheatersLatestTrailersListSaga);
   yield takeLatest(getPopularListRequest.type, requestgetPopularListSaga);
-  yield takeLatest(searchHomePageListRequest.type, requestSearchHomePageListSaga); ///////////////////////////
+  yield takeLatest(searchHomePageListRequest.type, requestSearchHomePageListSaga);
   yield takeLatest(getpeopleLeaderBoardRequest.type, requesstgetPeopleLeaderBoardSaga); ///homepage
   yield takeLatest(getMoviesPopularListRequest.type, requestGetMoviesPopularSaga);
   yield takeLatest(getMoviesNowPlayingListRequest.type, requestGetMoviesNowPlayingSaga);
@@ -282,3 +283,4 @@ export default function* watchHomePage() {
   //   requestAllOrganizationsSaga
   // );
 }
+// khi disspatch 1 action

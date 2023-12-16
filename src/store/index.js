@@ -8,7 +8,7 @@ import rootReducer from '~/store/slices/rootReducer';
 const persistConfig = {
   key: 'root',
   storage
-  // whitelist: ['authentication'] // Danh sách các reducer muốn lưu trữ
+  // whitelist: ['homepage'] // Danh sách các reducer muốn lưu trữ
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

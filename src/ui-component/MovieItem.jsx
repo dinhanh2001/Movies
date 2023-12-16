@@ -9,7 +9,8 @@ import { useState } from 'react';
 
 const MovieItem = ({ item }) => {
   const { favoriteList, dispatchChangeFavoriteList, rateList, dispatchChangeRateList } = useHomePageStore();
-  const [rate, setRate] = useState([...rateList]?.find((el) => el?.id === item?.id)?.star);
+  console.log('rateList', rateList);
+  const [rate, setRate] = useState(Object.values(rateList)?.find((el) => el?.id === item?.id)?.star);
   const navigate = useNavigate();
   const OnChangeFavoriteList = useCallback(() => {
     dispatchChangeFavoriteList(item?.id);
@@ -60,7 +61,7 @@ const MovieItem = ({ item }) => {
                   {' '}
                   <b>Yêu thích</b>
                   <HeartTwoTone
-                    twoToneColor={favoriteList?.includes(item?.id) ? 'pink' : 'black'}
+                    twoToneColor={Object.values(favoriteList)?.includes(item?.id) ? 'pink' : 'black'}
                     style={{ fontSize: 20, marginLeft: 5 }}
                   />
                 </Row>

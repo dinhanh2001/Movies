@@ -29,7 +29,7 @@ export const authentication = createSlice({
     loginRequest: () => {
       // request login
     },
-    loginSuccess: (state, action) => {
+    loginSuccess: (state) => {
       // const { accessToken, refreshToken, loginInfo } = action.payload;
       state.accessToken = 'accessToken';
       state.refreshToken = 'refreshToken';

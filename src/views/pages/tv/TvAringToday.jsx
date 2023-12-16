@@ -3,15 +3,14 @@ import { memo, useCallback, useState, useEffect, useMemo } from 'react';
 import MainCard from '~/ui-component/cards/MainCard';
 import Pagination from '@mui/material/Pagination';
 import Footer from '../../../ui-component/footer/Footer';
-import { Col, Row } from 'antd';
+import { Row } from 'antd';
 import { useHomePageStore } from '../../../hooks/homepage';
-import { Progress, Spin } from 'antd';
+import { Spin } from 'antd';
 import styled from 'styled-components';
 import './styles.css';
-import { useNavigate } from 'react-router';
 import TVItem from './TVItem';
 const TvAringToday = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const { loading, tvShowsAiringTodayList, dispatchGetTvShowsAiringTodayRequestList } = useHomePageStore();
   useEffect(() => {

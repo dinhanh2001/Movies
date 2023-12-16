@@ -170,7 +170,13 @@ const DetailTV = () => {
                   }}
                   arrow={true}
                 >
-                  <StarOutlined style={{ padding: 0, margin: 0 }} />
+                  <StarOutlined
+                    style={{
+                      padding: 0,
+                      margin: 0,
+                      color: Object.values(rateList)?.find((el) => el?.id === detailTV?.id) ? 'yellow' : 'white'
+                    }}
+                  />
                 </Popover>
               </div>
             </Row>

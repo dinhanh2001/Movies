@@ -19,7 +19,6 @@ function toHoursAndMinutes(totalMinutes) {
 const DetailMovie = () => {
   const { detailMovie, dispatchGetDetailMovieRequest, favoriteList, dispatchChangeFavoriteList, rateList, dispatchChangeRateList } =
     useHomePageStore();
-
   const [searchParam] = useSearchParams();
   const [rate, setRate] = useState(rateList?.find((el) => el?.id === detailMovie?.id)?.star);
   const [overView, setOverView] = useState(detailMovie?.overview?.slice(0, 150));
@@ -52,6 +51,7 @@ const DetailMovie = () => {
 
   const onChangeRate = useCallback(
     (value) => {
+      console.log(value);
       dispatchChangeRateList({ id: detailMovie?.id, star: value });
       setRate(value);
     },
@@ -193,7 +193,13 @@ const DetailMovie = () => {
                   }}
                   arrow={true}
                 >
-                  <StarOutlined style={{ padding: 0, margin: 0, color: rateList?.find((el) => el?.id === detailMovie?.id) && 'yellow' }} />
+                  <StarOutlined
+                    style={{
+                      padding: 0,
+                      margin: 0,
+                      color: Object.values(rateList)?.find((el) => el?.id === detailMovie?.id) ? 'yellow' : 'white' // nhan biet qua id
+                    }}
+                  />
                 </Popover>
               </div>
 
@@ -335,7 +341,7 @@ const DetailMovie = () => {
 
       <Footer></Footer>
       <Modal
-        open={isModalOpen}
+        open={isModalOpen} // quyet dinh dong hay mo
         onOk={handleOk}
         onCancel={handleCancel}
         width={1000}
@@ -348,12 +354,11 @@ const DetailMovie = () => {
         closeIcon={false}
       >
         <iframe
-          id="video"
-          width="944"
-          height="531"
-          src="https://www.youtube.com/embed/BAx2GaMW2qA"
-          title="Introduce movie"
-          // frameborder="Course"
+          width="928"
+          height="522"
+          src="https://www.youtube.com/embed/5XkgG_AAQs0"
+          title="Godzilla x Kong : Đế Chế Mới | Official Trailer"
+          // frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
         ></iframe>

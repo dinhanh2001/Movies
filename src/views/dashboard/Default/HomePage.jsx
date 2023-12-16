@@ -175,7 +175,7 @@ const HomePage = () => {
                               >
                                 <b>Yêu thích</b>
                                 <HeartTwoTone
-                                  twoToneColor={favoriteList?.includes(item?.id) ? 'pink' : 'black'}
+                                  twoToneColor={Object.values(favoriteList)?.includes(item?.id) ? 'pink' : 'black'}
                                   style={{ fontSize: 20, marginLeft: 5 }}
                                 />
                               </Row>
@@ -183,7 +183,7 @@ const HomePage = () => {
                                 <b>Đánh giá</b>
                                 <Rate
                                   allowHalf
-                                  value={rateList?.find((el) => el?.id === item?.id)?.star ?? 0}
+                                  value={Object.values(rateList)?.find((el) => el?.id === item?.id)?.star ?? 0}
                                   onChange={(value) => {
                                     onChangeRate(value, item?.id);
                                   }}

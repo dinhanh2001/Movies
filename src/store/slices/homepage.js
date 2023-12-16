@@ -19,8 +19,8 @@ const initialState = {
   detailPeople: {},
   detailMovie: {},
   detailTV: {},
-  favoriteList: {},
-  rateList: {},
+  favoriteList: [],
+  rateList: [],
   loading: false
 };
 /**
@@ -274,7 +274,7 @@ export const homepage = createSlice({
     changeFavoriteListRequest: () => {},
     changeFavoriteListSuccess: (state, action) => {
       if (!state.favoriteList?.includes(action.payload)) {
-        let newArray = [...(state.favoriteList ?? []), action.payload];
+        const newArray = [...state.favoriteList, action.payload];
         dispatchToast('success', 'Thêm vào danh sách yêu thích thành công!');
         return {
           ...state,
@@ -293,9 +293,11 @@ export const homepage = createSlice({
     changeRateListSuccess: (state, action) => {
       dispatchToast('success', 'Your rating has been saved.');
 
-      if (state?.rateList?.find((item) => item.id === action.payload.id)) {
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      if ([...state?.rateList]?.find((item) => item.id === action.payload.id)) {
         // th2: da danh gia => tim ptu va thay doi so sao
-        let newArray = state?.rateList?.map((item) => {
+        console.log('thop1', action.payload);
+        const newArray = state?.rateList?.map((item) => {
           if (item?.id === action.payload.id) {
             return {
               id: item?.id,
@@ -304,15 +306,13 @@ export const homepage = createSlice({
           }
           return item;
         });
-
         return {
           ...state,
           rateList: newArray
         };
       } else {
         // th1: chua danh gia thi them vao []
-        let newArray = [...(state.rateList ?? []), action.payload]; // chua danh gia
-
+        let newArray = [[...state.rateList], action.payload]; // chua danh gia
         return {
           ...state,
           rateList: newArray
@@ -390,3 +390,4 @@ export const {
 } = homepage.actions;
 
 export default homepage.reducer;
+// quan li state muon luu
