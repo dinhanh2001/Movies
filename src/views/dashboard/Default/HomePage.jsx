@@ -29,20 +29,14 @@ const HomePage = () => {
     dispatchGetInThearsTrailersList,
     dispatchGetPopularList,
     dispatchGetPopularTrailersList,
-    dispatchGetPeopleLeaderBoardList,
     dispatchChangeFavoriteList,
     dispatchChangeRateList
   } = useHomePageStore();
   const [trendingList, setTrendingList] = useState(todayTrendingList);
   const [popular, setPopular] = useState(popularTrailersList);
-  const [urlBackground, setUrlBackground] = useState(popular[0]?.backdrop_path);
+  // const [urlBackground, setUrlBackground] = useState(popular[0]?.backdrop_path);
 
-  const TrailersLayOut = styled.div`
-    background-image: url('https://www.themoviedb.org/t/p/w220_and_h330_face/${urlBackground}');
-    height: 400px;
-    background-repeat: repeat-x;
-    background-size: cover;
-  `;
+  const TrailersLayOut = styled.div``;
 
   useEffect(() => {
     dispatchGetTodayTrendingList();
@@ -50,14 +44,12 @@ const HomePage = () => {
     dispatchGetInThearsTrailersList();
     dispatchGetPopularList();
     dispatchGetPopularTrailersList();
-    dispatchGetPeopleLeaderBoardList();
   }, [
     dispatchGetInThearsTrailersList,
     dispatchGetPopularList,
     dispatchGetPopularTrailersList,
     dispatchGetThisWeekTrendingList,
-    dispatchGetTodayTrendingList,
-    dispatchGetPeopleLeaderBoardList
+    dispatchGetTodayTrendingList
   ]);
 
   const onChangeTrending = useCallback(

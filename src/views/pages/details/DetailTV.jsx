@@ -18,7 +18,7 @@ function toHoursAndMinutes(totalMinutes) {
 
 const DetailTV = () => {
   const { detailTV, dispatchGetDetailTV, rateList, dispatchChangeRateList, dispatchChangeFavoriteList, favoriteList } = useHomePageStore();
-  const [rate, setRate] = useState(rateList?.find((el) => el?.id === detailTV?.id)?.star);
+  const [rate, setRate] = useState(Object.values(rateList)?.find((el) => el?.id === detailTV?.id)?.star ?? 0);
   const [searchParam] = useSearchParams();
   const [overView, setOverView] = useState(detailTV?.overview?.slice(0, 150));
   const id = useMemo(() => {
@@ -126,7 +126,10 @@ const DetailTV = () => {
                 }}
                 onClick={OnChangeFavoriteList}
               >
-                <HeartTwoTone style={{ padding: 0, margin: 0 }} twoToneColor={favoriteList?.includes(detailTV?.id) ? 'pink' : 'blue'} />
+                <HeartTwoTone
+                  style={{ padding: 0, margin: 0 }}
+                  twoToneColor={Object.values(favoriteList)?.includes(detailTV?.id) ? 'pink' : 'blue'}
+                />
               </Row>
               <div
                 style={{

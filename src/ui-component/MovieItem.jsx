@@ -5,12 +5,13 @@ import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import './style.css';
 import { useHomePageStore } from '../hooks/homepage';
-import { useState } from 'react';
+import { useMemo } from 'react';
 
 const MovieItem = ({ item }) => {
   const { favoriteList, dispatchChangeFavoriteList, rateList, dispatchChangeRateList } = useHomePageStore();
-  console.log('rateList', rateList);
-  const [rate, setRate] = useState(Object.values(rateList)?.find((el) => el?.id === item?.id)?.star);
+
+  // const [rate, setRate] = useState(Object.values(rateList)?.find((el) => el?.id === item?.id)?.star ?? 0);
+  const rate = useMemo(() => Object.values(rateList)?.find((el) => el?.id === item?.id)?.star ?? 0, [rateList, item?.id]);
   const navigate = useNavigate();
   const OnChangeFavoriteList = useCallback(() => {
     dispatchChangeFavoriteList(item?.id);
@@ -19,7 +20,7 @@ const MovieItem = ({ item }) => {
   const onChangeRate = useCallback(
     (value) => {
       dispatchChangeRateList({ id: item?.id, star: value });
-      setRate(value);
+      // setRate(value);
     },
     [dispatchChangeRateList, item?.id]
   );
@@ -34,7 +35,7 @@ const MovieItem = ({ item }) => {
   return (
     <div className="trending-item" key={item?.id}>
       <Col onClick={OnDetail}>
-        <img className="image-trending" src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${item?.backdrop_path}`} alt=""></img>
+        <img className="image" src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${item?.backdrop_path}`} alt=""></img>
       </Col>
 
       <Progress

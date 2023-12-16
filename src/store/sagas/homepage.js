@@ -243,12 +243,19 @@ function* requestgetDetailTVSaga(action) {
 }
 
 function* requestRequestChangeFavoriteRequest(action) {
-  console.log(action);
-  yield put(changeFavoriteListSuccess(action.payload)); // nhan id tu giao dien
+  try {
+    yield put(changeFavoriteListSuccess(action.payload)); // nhan id tu giao dien
+  } catch (e) {
+    yield put(changeFavoriteListSuccess(action.payload));
+  }
 }
 
 function* requestChangeRateRequest(action) {
-  yield put(changeRateListSuccess(action.payload)); // nhan id tu giao dien
+  try {
+    yield put(changeRateListSuccess(action.payload)); // nhan id tu giao dien
+  } catch (e) {
+    yield put(changeRateListSuccess(action.payload)); // nhan id tu giao dien
+  }
 }
 
 export default function* watchHomePage() {

@@ -76,6 +76,10 @@ h3 {
   display: flex;
   margin-top: 20px;
   padding: 20px;
+  cursor: pointer;
+  background-image: url('https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,00192f,00baff)/SqAZjEqqBAYvyu3KSrWq1d0QLB.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .lastest-item {
   /* width: 320px; */

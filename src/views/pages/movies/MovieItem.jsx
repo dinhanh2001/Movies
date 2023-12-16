@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 import { useHomePageStore } from '../../../hooks/homepage';
 const MovieItem = ({ item }) => {
   const { favoriteList, dispatchChangeFavoriteList, dispatchChangeRateList, rateList } = useHomePageStore();
-  const [rate, setRate] = useState(rateList?.find((el) => el?.id === item?.id)?.star);
+  const [rate, setRate] = useState(Object.values(rateList)?.find((el) => el?.id === item?.id)?.star ?? 0);
   const navigate = useNavigate();
   const onChangeRate = useCallback(
     (value) => {
@@ -47,7 +47,7 @@ const MovieItem = ({ item }) => {
                   {' '}
                   <b>Yêu thích</b>
                   <HeartTwoTone
-                    twoToneColor={favoriteList?.includes(item?.id) ? 'pink' : 'black'}
+                    twoToneColor={Object.values(favoriteList)?.includes(item?.id) ? 'pink' : 'black'}
                     style={{ fontSize: 20, marginLeft: 5 }}
                   />
                 </Row>

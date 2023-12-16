@@ -15,11 +15,9 @@ const UsersPage = () => {
     leaderoardList,
     dispatchGetPeopleLeaderBoardList
   } = useHomePageStore();
-
   const navigate = useNavigate();
-
+  console.log(leaderoardList);
   useEffect(() => {
-    console.log('effect');
     dispatchGetPeopleLeaderBoardList(1);
   }, [dispatchGetPeopleLeaderBoardList]);
 
@@ -27,7 +25,6 @@ const UsersPage = () => {
 
   const handleChange = useCallback(
     (_, value) => {
-      setPage(value);
       dispatchGetPeopleLeaderBoardList(value);
       setPage(value);
     },
@@ -67,7 +64,7 @@ const UsersPage = () => {
                     />
                     <h4>{item?.name ?? item?.original_name}</h4>
                     {item?.known_for?.map((item, id) => {
-                      return <span key={id}>{item?.original_title ?? item?.name ?? item?.original_name ?? item?.original_title},</span>;
+                      return <p key={id}>{item?.original_title ?? item?.name ?? item?.original_name ?? item?.original_title},</p>;
                     })}
                   </div>
                 </Col>
@@ -76,7 +73,7 @@ const UsersPage = () => {
         </Row>
       </div>
       <PaginationWrapper>
-        <Pagination count={leaderoardList?.total_pages} page={page} onChange={handleChange} color="primary" />
+        <Pagination count={100} page={page} onChange={handleChange} color="primary" />
       </PaginationWrapper>
       <Footer></Footer>
     </MainCard>

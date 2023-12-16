@@ -292,16 +292,12 @@ export const homepage = createSlice({
     changeRateListRequest: () => {},
     changeRateListSuccess: (state, action) => {
       dispatchToast('success', 'Your rating has been saved.');
-
-      // eslint-disable-next-line no-unsafe-optional-chaining
-      if ([...state?.rateList]?.find((item) => item.id === action.payload.id)) {
-        // th2: da danh gia => tim ptu va thay doi so sao
-        console.log('thop1', action.payload);
+      if (state.rateList?.find((item) => item.id === action.payload.id)) {
         const newArray = state?.rateList?.map((item) => {
           if (item?.id === action.payload.id) {
             return {
               id: item?.id,
-              star: action.payload.star // sao danh gia
+              star: action.payload.star // thay doi sao danh gia
             };
           }
           return item;
@@ -311,13 +307,37 @@ export const homepage = createSlice({
           rateList: newArray
         };
       } else {
-        // th1: chua danh gia thi them vao []
-        let newArray = [[...state.rateList], action.payload]; // chua danh gia
+        const newList = [...state.rateList, action.payload];
         return {
           ...state,
-          rateList: newArray
+          rateList: newList
         };
       }
+      // eslint-disable-next-line no-unsafe-optional-chaining
+      // if ([...state?.rateList]?.find((item) => item.id === action.payload.id)) {
+      //   // th2: da danh gia => tim ptu va thay doi so sao
+      //   console.log('thop1', action.payload);
+      //   const newArray = state?.rateList?.map((item) => {
+      //     if (item?.id === action.payload.id) {
+      //       return {
+      //         id: item?.id,
+      //         star: action.payload.star // sao danh gia
+      //       };
+      //     }
+      //     return item;
+      //   });
+      //   return {
+      //     ...state,
+      //     rateList: newArray
+      //   };
+      // } else {
+      //   // th1: chua danh gia thi them vao []
+      //   let newArray = [[...state.rateList], action.payload]; // chua danh gia
+      //   return {
+      //     ...state,
+      //     rateList: newArray
+      //   };
+      // }
     },
     changeRateListFailt: (state) => {
       dispatchToast('error', 'changeFavoriteListFailt!');

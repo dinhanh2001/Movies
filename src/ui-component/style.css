@@ -3,7 +3,8 @@
   padding-right: 10px;
   position: relative;
   height: 400px;
-  padding: 10px;
+  /* padding: 0px; */
+  cursor: pointer;
 }
 
 .pop-div {
@@ -22,7 +23,12 @@
   position: absolute;
   background-color: black;
   border-radius: 25px;
-
-  bottom: 110px;
+  bottom: 90px;
   left: 20px;
+}
+.image {
+  width: 180px;
+  height: 275px;
+  border-radius: 10px;
+  margin-bottom: 25px;
 }

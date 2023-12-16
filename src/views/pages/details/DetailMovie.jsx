@@ -20,7 +20,12 @@ const DetailMovie = () => {
   const { detailMovie, dispatchGetDetailMovieRequest, favoriteList, dispatchChangeFavoriteList, rateList, dispatchChangeRateList } =
     useHomePageStore();
   const [searchParam] = useSearchParams();
-  const [rate, setRate] = useState(rateList?.find((el) => el?.id === detailMovie?.id)?.star);
+  const id = useMemo(() => {
+    return searchParam.get('id');
+  }, [searchParam]);
+
+  const rate = useMemo(() => rateList?.find((el) => el?.id === detailMovie?.id)?.star ?? 0, [detailMovie?.id, rateList]);
+  console.log(rate);
   const [overView, setOverView] = useState(detailMovie?.overview?.slice(0, 150));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,19 +46,14 @@ const DetailMovie = () => {
     dispatchChangeFavoriteList(detailMovie?.id);
   }, [dispatchChangeFavoriteList, detailMovie?.id]);
 
-  const id = useMemo(() => {
-    return searchParam.get('id');
-  }, [searchParam]);
-
   useEffect(() => {
     dispatchGetDetailMovieRequest(id);
   }, [dispatchGetDetailMovieRequest, id]);
 
   const onChangeRate = useCallback(
     (value) => {
-      console.log(value);
       dispatchChangeRateList({ id: detailMovie?.id, star: value });
-      setRate(value);
+      // setRate(value);
     },
     [detailMovie?.id, dispatchChangeRateList]
   );
@@ -130,7 +130,8 @@ const DetailMovie = () => {
                   borderRadius: 25,
                   display: 'flex',
                   justifyContent: 'center',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  cursor: 'pointer'
                 }}
               >
                 <MenuUnfoldOutlined style={{ padding: 0, margin: 0 }} />
@@ -150,7 +151,10 @@ const DetailMovie = () => {
                 }}
                 onClick={OnChangeFavoriteList}
               >
-                <HeartTwoTone style={{ padding: 0, margin: 0 }} twoToneColor={favoriteList?.includes(detailMovie?.id) ? 'pink' : 'blue'} />
+                <HeartTwoTone
+                  style={{ padding: 0, margin: 0 }}
+                  twoToneColor={Object.values(favoriteList)?.includes(detailMovie?.id) ? 'pink' : 'blue'}
+                />
               </Row>
               <div
                 style={{
@@ -162,7 +166,8 @@ const DetailMovie = () => {
                   borderRadius: 25,
                   display: 'flex',
                   justifyContent: 'center',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  cursor: 'pointer'
                 }}
               >
                 <TagOutlined style={{ padding: 0, margin: 0 }} />
@@ -177,7 +182,8 @@ const DetailMovie = () => {
                   borderRadius: 25,
                   display: 'flex',
                   justifyContent: 'center',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  cursor: 'pointer'
                 }}
               >
                 <Popover
@@ -245,6 +251,20 @@ const DetailMovie = () => {
           </Col>
         </Row>
         <Divider></Divider>
+        <h2 style={{ marginTop: 20 }}>Diễn viên được thanh toán hàng đầu</h2>
+
+        <div id="top-cast">
+          {Array.from({ length: 10 }, (_, key) => {
+            // so dien vien
+            const idCast = dienvien[Math.floor(Math.random() * 71 + 1)]?.id;
+            return (
+              <Col key={key} className="item-cast">
+                <Image src={dienvien[idCast]?.path} style={{ width: 120, height: 'auto' }} alt="image-error" />
+                <p style={{ paddingLeft: 5 }}>{dienvien[idCast]?.name}</p>
+              </Col>
+            );
+          })}
+        </div>
         <Row style={{ marginTop: 50 }} justify={'space-around'} gutter={[30, 50]}>
           <Card title="Status" bordered={false}>
             {detailMovie?.status}
@@ -264,20 +284,7 @@ const DetailMovie = () => {
             })}
           </Card>
         </Row>
-        <h2 style={{ marginTop: 20 }}>Diễn viên được thanh toán hàng đầu</h2>
 
-        <div id="top-cast">
-          {Array.from({ length: 10 }, (_, key) => {
-            // so dien vien
-            const idCast = dienvien[Math.floor(Math.random() * 71 + 1)]?.id;
-            return (
-              <Col key={key} className="item-cast">
-                <Image src={dienvien[idCast]?.path} style={{ width: 100, height: 'auto' }} alt="image-error" />
-                <p style={{ paddingLeft: 5 }}>{dienvien[idCast]?.name}</p>
-              </Col>
-            );
-          })}
-        </div>
         <h2 style={{ marginBottom: 20, marginTop: 10 }}>Các công ty sản xuất</h2>
 
         <Row gutter={[20, 50]} justify={'space-around'}>
