@@ -18,7 +18,7 @@ const SearchHomePage = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   // const location = useLocation();
   const keyword = useMemo(() => searchParams?.get('keyword'), [searchParams]);
-  const [type, setType] = useState('tv');
+  const [type, setType] = useState('movie');
   const [page, setPage] = useState(1);
   const { dispatchSearchHomePageList, searchList } = useHomePageStore();
 

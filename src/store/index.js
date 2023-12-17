@@ -8,8 +8,7 @@ import rootReducer from '~/store/slices/rootReducer';
 const persistConfig = {
   key: 'root',
   storage
-  // blacklist: ['homepage']
-  // whitelist: ['homepage'] // Danh sách các reducer muốn lưu trữ
+  // blacklist: ['homepage'] //fig bug
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

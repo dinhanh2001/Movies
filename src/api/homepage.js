@@ -20,6 +20,7 @@ const getPopularListApi = () => {
 
 const searchHomePage = (params) => {
   ///{type:"movie",keyword:"dgdgd",page:4}
+  console.log(params);
   return axiosClient.get(`search/${params?.type}?query=${params?.keyword}&language=vi&page=${params?.page ?? 1}`);
 };
 

@@ -92,7 +92,6 @@ function* requestTodayTrendingListSaga(action) {
 // giao hien => hooks => saga => slice => hooks lay data slice da luu => trag ve giao dien
 function* requestThisWeekTrendingListSaga(action) {
   try {
-    console.log('requestThisWeekTrendingListSaga');
     const data = yield call(getThisWeekListApi, action.payload);
     yield put(getThisWeekTrendingListSuccess(data));
   } catch (error) {
